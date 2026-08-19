@@ -1,0 +1,6 @@
+# Arquivos locais e segredos nunca devem entrar no repositório do cliente.
+.DS_Store
+.adapta/
+.env
+.env.*
+!.env.example

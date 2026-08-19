@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "adapta-cliente-handoff/v1",
+  "phase": 1,
+  "versions": {
+    "package": "0.1.0",
+    "adapta": "0.7.0",
+    "adaptaCliente": "0.2.0"
+  },
+  "generatedAt": "2026-08-19T19:04:52.256Z",
+  "files": [
+    {
+      "path": "04_fase-atual/README.md",
+      "sha256": "57843f15414253dfbcc46b12fc0860f4aa0481fefdd8440eca68b80a3663f4cc",
+      "classification": "template-publico"
+    },
+    {
+      "path": "04_fase-atual/fase.md",
+      "sha256": "9947b65c365f72117cdd69bf7c1454e1fb2d697137ae44bc0e267b86b5246572",
+      "classification": "fase-atual"
+    },
+    {
+      "path": "04_fase-atual/specs/spec-1-001-governanca-responsaveis-rls.md",
+      "sha256": "1dd8923d52abbb45bc3ace23770f756e54d88eca0344e5ce2411dec645cca19d",
+      "classification": "spec-fase-atual"
+    },
+    {
+      "path": "04_fase-atual/specs/spec-1-002-registro-operacional-producao.md",
+      "sha256": "ac19378aba916867e6d713008509f8ae5553cfc4dd4809958bbb1edd84a49dfa",
+      "classification": "spec-fase-atual"
+    },
+    {
+      "path": "04_fase-atual/specs/spec-1-003-contrato-saida-central.md",
+      "sha256": "cd1b5f80219c9c51301996da02947320a2b9075343fd33e45bf0d41eeecd2925",
+      "classification": "spec-fase-atual"
+    }
+  ]
+}
