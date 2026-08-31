@@ -11,9 +11,9 @@
 
 ## Progresso da fase
 
-- **Tasks:** 1/12 (8%)
-- **Task concluída:** F1-T001 — registrar pré-condições da governança.
-- **Próxima task do champion:** F1-T002 — criar fixture e política mínima de escopo.
+- **Tasks:** 2/12 (17%)
+- **Tasks concluídas:** F1-T001 — registrar pré-condições da governança; F1-T002 — criar fixture e política mínima de escopo.
+- **Próxima task do champion:** F1-T003 — exercitar negações e privacidade.
 
 ## Contexto operacional confirmado
 
@@ -37,7 +37,8 @@
 |---|---|---|
 | Preparação | Escopo, SPECs, tasks e pasta operacional da Fase 1 | 2026-08-19 |
 | F1-T001 | Pré-condições formalizadas; identidade, responsável, superfície e runner registrados | 2026-08-31 |
+| F1-T002 | Fixture sintética e política mínima RN-1-001; cenário RLS-ALLOW demonstrado no Skip, sem dados reais | 2026-08-31 |
 
 ## Próxima reunião
 
-A definir — demonstração da fixture sintética e dos critérios da Fase 1 após a análise da F1-T002.
+A definir — análise da F1-T003 sobre negações de escopo e privacidade.
