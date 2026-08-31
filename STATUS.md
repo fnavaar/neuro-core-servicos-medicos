@@ -12,7 +12,7 @@
 ## Progresso da fase
 
 - **Tasks:** 1/12 (8%)
-- **Task atual:** F1-T001 — registrar pré-condições da governança — concluída tecnicamente e aguardando validação humana final.
+- **Task concluída:** F1-T001 — registrar pré-condições da governança.
 - **Próxima task do champion:** F1-T002 — criar fixture e política mínima de escopo.
 
 ## Contexto operacional confirmado
