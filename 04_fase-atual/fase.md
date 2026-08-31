@@ -1,6 +1,6 @@
 # Fase 1 — Tarefas gerais
 
-**Estado da fase:** F1-T001 e F1-T002 concluídas; F1-T003 é a próxima task, ainda não iniciada.  
+**Estado da fase:** F1-T001, F1-T002 e F1-T003 concluídas; F1-T004 é a próxima task, ainda não iniciada.  
 **Regra de execução:** uma task por vez, somente após a pré-condição da linha estar comprovada; nenhum dado real, integração ou decisão ausente pode ser inventado.
 
 ## Tasks
@@ -9,7 +9,7 @@
 |---|---|---|---|---|---|---|
 | F1-T001 | Registrar pré-condições da governança | Cliente — administrador | SPEC-1-001 | Matriz RLS, identidade oficial, superfície técnica e runner registrados ou ausência formalizada com dono e prazo | Gate de escopo aprovado; participação do cliente | concluída — 2026-08-31 |
 | F1-T002 | Criar fixture e política mínima de escopo | Ethos | SPEC-1-001 | Fixture sintética contém entidade, unidade, profissional, usuários e escopos; usuário autorizado lê o registro-alvo | F1-T001 concluída; ambiente de teste autorizado | concluída — 2026-08-31 |
-| F1-T003 | Exercitar negações e privacidade | Ethos | SPEC-1-001 | Usuários sem entidade, unidade ou profissional recebem negação e payload clínico não é persistido | F1-T002 concluída | bloqueada |
+| F1-T003 | Exercitar negações e privacidade | Ethos | SPEC-1-001 | Usuários sem entidade, unidade ou profissional recebem negação e payload clínico não é persistido | F1-T002 concluída | concluída — 2026-08-31 |
 | F1-T004 | Auditar alteração e demonstrar rollback de RLS | Ethos | SPEC-1-001 | Alteração sensível registra versões e rollback restaura política anterior sem apagar auditoria | F1-T002 e F1-T003 concluídas | bloqueada |
 | F1-T005 | Registrar contrato de campos mínimos | Cliente — administrador | SPEC-1-002 | Campos mínimos, identidade oficial, fronteira clínico/administrativo e retenção registrados | F1-T001 concluída; SPEC-1-001 desbloqueada | bloqueada |
 | F1-T006 | Criar registro operacional válido | Ethos | SPEC-1-002 | Fixture completa produz registro `VALIDO` com dimensões, responsável, evidência, auditoria e versão | F1-T005 e F1-T002 concluídas | bloqueada |
@@ -30,4 +30,4 @@
 
 ## Próximo passo
 
-Analisar F1-T003 em uma nova rodada autorizada. Não criar negações adicionais, persistência de dados clínicos ou alterações fora do recorte antes da análise e autorização específicas da task.
+Analisar F1-T004 em uma nova rodada autorizada. Não criar alterações de política, auditoria ou rollback fora do recorte antes da análise e autorização específicas da task.
