@@ -6,6 +6,7 @@
 
 ## Registro
 
+- 2026-09-01 · [Fábio Schneider] · Task F1-T004 concluída: alteração sensível de escopo versionada (before/after) com auditoria append-only e rollback restaurando a política anterior sem apagar eventos; não-admin e rollback inválido negados; demonstrado no Skip versão 0.0.13, com evidência em `05_entregas/F1-T004-evidencia.md`.
 - 2026-08-31 · [Fábio Schneider] · Task F1-T003 concluída: três negações de escopo (entidade, unidade, profissional) demonstradas sem vazamento de payload e payload clínico não persistido; cenários `RLS-ENTITY-DENY`, `RLS-UNIT-DENY`, `RLS-PROF-DENY` e privacidade no Skip versão 0.0.9, com evidência em `05_entregas/F1-T003-evidencia.md`.
 - 2026-08-31 · [Fábio Schneider] · Task F1-T002 concluída: fixture sintética com entidade, unidade, profissional, usuários e escopos; política RN-1-001 e cenário RLS-ALLOW demonstrados no Skip versão 0.0.6, sem dados reais ou conteúdo clínico.
 - 2026-08-31 · [Fábio Schneider] · Task F1-T001 concluída: pré-condições de governança confirmadas e formalizadas em `05_entregas/F1-T001-evidencia.md`; Qualivida é a entidade principal, Fábio é CEO/champion/único responsável, a superfície e o runner são ETHOS, e há 5 unidades (2 Qualivida e 3 nomes pendentes).
