@@ -11,9 +11,9 @@
 
 ## Progresso da fase
 
-- **Tasks:** 7/12 (58%)
-- **Tasks concluídas:** F1-T001 — pré-condições da governança; F1-T002 — fixture e política mínima de escopo; F1-T003 — negações e privacidade; F1-T004 — auditoria e rollback de RLS; F1-T005 — contrato de campos mínimos; F1-T006 — registro operacional válido; F1-T007 — bloqueios, bordas e versionamento.
-- **Próxima task do champion:** F1-T008 — entregar evidência do registro para o contrato (SPEC-1-002, dono: analista financeiro).
+- **Tasks:** 8/12 (67%)
+- **Tasks concluídas:** F1-T001 — pré-condições da governança; F1-T002 — fixture e política mínima de escopo; F1-T003 — negações e privacidade; F1-T004 — auditoria e rollback de RLS; F1-T005 — contrato de campos mínimos; F1-T006 — registro operacional válido; F1-T007 — bloqueios, bordas e versionamento; F1-T008 — evidência do registro para o contrato.
+- **Próxima task do champion:** F1-T009 — registrar aprovação do contrato de saída (SPEC-1-003, dono: responsável financeiro). Atenção: a central consumidora ainda não foi identificada — pré-condição a confirmar.
 
 ## Contexto operacional confirmado
 
@@ -29,6 +29,7 @@
 | Trava | Desde | Quem resolve | Ação em curso |
 |---|---|---|---|
 | Nomes das 3 unidades restantes | 2026-08-31 | Fábio | Confirmar quando forem necessários para cadastro real |
+| Central consumidora (destino do contrato de saída) não identificada | 2026-09-29 | Fábio | Pré-condição da F1-T009 — confirmar antes de iniciar |
 
 ## Entregas concluídas
 
@@ -42,7 +43,8 @@
 | F1-T005 | Contrato F1-FIELDS-BASELINE: catálogo próprio por clínica (27 serviços, 21 pagadores), guia individual + record_id, retenção permanente, RN-1-005/006/007, código TUSS opcional | 2026-09-01 |
 | F1-T006 | Registro operacional válido: módulo com dimensões mínimas da SPEC-1-002, validação VALIDO/BLOQUEADO, RLS reaproveitada, auditoria e versionamento; demonstrado no Skip v0.0.27/v0.0.28 | 2026-09-29 |
 | F1-T007 | Bloqueios, bordas e versionamento: BLOQUEADO persistido com missing_fields, status/data/competência validados, conteúdo clínico rejeitado, correção de qualquer registro por nova versão, elegibilidade para a central (VALIDO + ATENDIDO); demonstrado no Skip v0.0.36 | 2026-09-29 |
+| F1-T008 | Separação de evidência para o contrato: `separateForContract` divide elegíveis (VALIDO + ATENDIDO) de excluídos com motivo (BLOQUEADO, STATUS_SEM_PRODUCAO, RASCUNHO); fixture F1-BLOCKED-001; demonstrado no Skip v0.0.40 | 2026-09-29 |
 
 ## Próxima reunião
 
-A definir — análise da F1-T008 sobre separação de evidência para o contrato de saída.
+A definir — identificar a central consumidora e aprovar o contrato de saída (F1-T009).
