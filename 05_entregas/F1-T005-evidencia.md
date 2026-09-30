@@ -4,13 +4,13 @@
 **SPEC:** SPEC-1-002 — Registro operacional de prontuário/produção
 **Data:** 2026-09-01
 **Champion/aprovador:** Fábio Schneider — CEO, líder do projeto e único responsável
-**Teste humano:** pendente
+**Teste humano:** aprovado por Fábio em 2026-09-01 21:08 ("funcionou, concluir task") — após 2 correções validadas no preview
 
 ## Critério binário
 
 Campos mínimos, identidade oficial, fronteira clínico/administrativo e retenção registrados.
 
-## Decisões do champion (2026-09-01, 17:45 → 20:11)
+## Decisões do champion (2026-09-01, 17:45 → 21:02)
 
 | # | Decisão | Resposta de Fábio | Estado |
 |---|---|---|---|
@@ -18,9 +18,10 @@ Campos mínimos, identidade oficial, fronteira clínico/administrativo e retenç
 | 2 | Identidade oficial | **Nº de guia individual + `record_id` técnico** | ✅ |
 | 3 | Retenção | **Para sempre**; correção somente por nova versão | ✅ |
 | 4 | Superfície autorizada | **Skip + GitHub + ETHOS** | ✅ |
-| 5 | Célula em branco (serviço × pagador) | **Serviço não atendido** → indisponível para marcação/agendamento; disponível só com vinculação na tabela de preços | ✅ |
-| 6 | Escopo do catálogo | **Por clínica/unidade** — tabela atual = Clínica Qualivida Resende/RJ (exemplo para avançar) | ✅ |
-| 7 | Alteração de valores | **Histórico lançado não muda**; novo valor com **data de vigência** — imediata, futura programada (convênios) ou retroativa (demonstrativo de mês anterior) | ✅ |
+| 5 | Célula em branco (serviço × pagador) | **Serviço não atendido** → indisponível para marcação/agendamento; disponível só com vinculação na tabela de preços (RN-1-005) | ✅ |
+| 6 | Escopo do catálogo | **Por clínica/unidade** — tabela atual = Clínica Qualivida Resende/RJ (exemplo para avançar) (RN-1-006) | ✅ |
+| 7 | Alteração de valores | **Histórico lançado não muda**; novo valor com **data de vigência** — imediata, futura programada (convênios) ou retroativa (demonstrativo de mês anterior) (RN-1-007) | ✅ |
+| 8 | Código do serviço (correção 21:02) | **Código TUSS não é obrigatório** — serviço pode não ter código ou ter código de **pacote contratualizado** com a operadora; o que define existência/agendabilidade é a **vinculação de valor** (RN-1-005) | ✅ |
 
 ## Contrato registrado (F1-FIELDS-BASELINE)
 
@@ -31,7 +32,7 @@ Campos mínimos, identidade oficial, fronteira clínico/administrativo e retenç
 
 ### Catálogo de serviços (`service_ref`)
 
-- **27 serviços** (23 com código TUSS; 4 sem código → `BLOQUEADO` até receber código: Holter-EEG 12hs, Holter-EEG 24hs, VEEG prol 1 hora, VEEG prol 2 hora).
+- **27 serviços** — código TUSS **opcional** (decisão 8): pode não haver código ou ser código de pacote contratualizado com a operadora. Serviço existe e é agendável quando tem valor vinculado.
 - **21 pagadores**: Bradesco (Emp/Ind), Mediservice, Sulamérica, GEAP, INB, Particular, Particular VR/BM, Salvus, Salutem, Saúde CAIXA, UNIMED, Golden Cross, Fusex, CASSI, Postal Saúde, Real Grandeza, Plamer, Amil, Abertta, Liv.
 - Valores da planilha: **desatualizados/informativos** — não são tabela vigente; a vinculação (existência de valor) é que habilita o serviço.
 - **RN-1-005:** sem vínculo → não atendido, fora da marcação/agendamento.
@@ -43,12 +44,13 @@ Campos mínimos, identidade oficial, fronteira clínico/administrativo e retenç
 - Proibido no MVP: nome de paciente, diagnóstico, laudo, prescrição, presença.
 - Estados: `RASCUNHO` / `VALIDO` / `BLOQUEADO`; status de origem preservado; valores condicionais nulos explícitos, nunca zero silencioso.
 
-## Implementação entregue (após autorização de 20:42)
+## Implementação entregue
 
 | Artefato | Conteúdo |
 |---|---|
-| `src/lib/service-catalog.ts` | Catálogo estruturado: 27 serviços, 21 pagadores, pacote Resende/RJ com linha do tempo de valores; `isServiceOffered` (RN-1-005), `getPriceAt` (RN-1-007), `availableServices`, `isServiceBlockedByMissingCode` |
+| `src/lib/service-catalog.ts` | Catálogo estruturado: 27 serviços, 21 pagadores, pacote Resende/RJ com linha do tempo de valores; `isServiceOffered` (RN-1-005), `getPriceAt` (RN-1-007), `availableServices`, `serviceCodeLabel` (TUSS/pacote/sem código) |
 | `src/pages/Index.tsx` | Seção "F1-T005 · Contrato de campos mínimos": regras RN-1-005/006/007 + matriz serviço × pagador com disponibilidade e vigências demonstradas (ECG/INB retroativa; Consulta/Particular futura) |
+| `src/components/Layout.tsx` | Correção de rolagem (`overflow-y-auto`) — debug validado por Fábio |
 | `05_entregas/F1-T005-evidencia.md` | Este documento |
 
 ## Verificação
@@ -57,7 +59,9 @@ Campos mínimos, identidade oficial, fronteira clínico/administrativo e retenç
 - **PASSOU:** identidade oficial registrada (`guide_number` + `record_id`).
 - **PASSOU:** fronteira clínico/administrativo registrada (proibições do MVP).
 - **PASSOU:** retenção registrada (para sempre; correção por nova versão).
-- **PENDENTE:** teste humano de Fábio.
+- **PASSOU:** QA automatizado (Skip v0.0.25: setup, lint, build, integrações, testes).
+- **PASSOU:** correções de debug provadas no preview por screenshot (rolagem; código opcional).
+- **PASSOU:** teste humano aprovado por Fábio (2026-09-01 21:08).
 
 ## Limites respeitados
 
