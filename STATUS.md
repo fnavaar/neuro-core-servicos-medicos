@@ -11,9 +11,9 @@
 
 ## Progresso da fase
 
-- **Tasks:** 8/12 (67%)
-- **Tasks concluídas:** F1-T001 — pré-condições da governança; F1-T002 — fixture e política mínima de escopo; F1-T003 — negações e privacidade; F1-T004 — auditoria e rollback de RLS; F1-T005 — contrato de campos mínimos; F1-T006 — registro operacional válido; F1-T007 — bloqueios, bordas e versionamento; F1-T008 — evidência do registro para o contrato.
-- **Próxima task do champion:** F1-T009 — registrar aprovação do contrato de saída (SPEC-1-003, dono: responsável financeiro). Atenção: a central consumidora ainda não foi identificada — pré-condição a confirmar.
+- **Tasks:** 9/12 (75%)
+- **Tasks concluídas:** F1-T001 — pré-condições da governança; F1-T002 — fixture e política mínima de escopo; F1-T003 — negações e privacidade; F1-T004 — auditoria e rollback de RLS; F1-T005 — contrato de campos mínimos; F1-T006 — registro operacional válido; F1-T007 — bloqueios, bordas e versionamento; F1-T008 — evidência do registro para o contrato; F1-T009 — aprovação do contrato de saída.
+- **Próxima task do champion:** F1-T010 — gerar envelope válido versionado (SPEC-1-003, dono: Ethos).
 
 ## Contexto operacional confirmado
 
@@ -23,13 +23,13 @@
 - **Usuários:** Fábio é o único usuário com acesso no momento.
 - **Superfície técnica:** ETHOS.
 - **Runner de testes:** ETHOS.
+- **Central consumidora:** este próprio sistema (nova aplicação de prontuário/produção) — confirmado em 2026-09-29.
 
 ## Travas ativas
 
 | Trava | Desde | Quem resolve | Ação em curso |
 |---|---|---|---|
 | Nomes das 3 unidades restantes | 2026-08-31 | Fábio | Confirmar quando forem necessários para cadastro real |
-| Central consumidora (destino do contrato de saída) não identificada | 2026-09-29 | Fábio | Pré-condição da F1-T009 — confirmar antes de iniciar |
 
 ## Entregas concluídas
 
@@ -44,7 +44,8 @@
 | F1-T006 | Registro operacional válido: módulo com dimensões mínimas da SPEC-1-002, validação VALIDO/BLOQUEADO, RLS reaproveitada, auditoria e versionamento; demonstrado no Skip v0.0.27/v0.0.28 | 2026-09-29 |
 | F1-T007 | Bloqueios, bordas e versionamento: BLOQUEADO persistido com missing_fields, status/data/competência validados, conteúdo clínico rejeitado, correção de qualquer registro por nova versão, elegibilidade para a central (VALIDO + ATENDIDO); demonstrado no Skip v0.0.36 | 2026-09-29 |
 | F1-T008 | Separação de evidência para o contrato: `separateForContract` divide elegíveis (VALIDO + ATENDIDO) de excluídos com motivo (BLOQUEADO, STATUS_SEM_PRODUCAO, RASCUNHO); fixture F1-BLOCKED-001; demonstrado no Skip v0.0.40 | 2026-09-29 |
+| F1-T009 | Contrato de saída `production-record.v1` APROVADO pelo responsável financeiro: idempotência por `sistema:record_id:versão`, origem preservada, valores nulos aceitos nesta fase, privacidade na fronteira, versionamento sem emenda silenciosa; central consumidora = este próprio sistema; evidência em `05_entregas/F1-T009-evidencia.md` | 2026-09-29 |
 
 ## Próxima reunião
 
-A definir — identificar a central consumidora e aprovar o contrato de saída (F1-T009).
+A definir — geração do envelope `production-record.v1` (F1-T010) e testes de rejeição/idempotência/privacidade (F1-T011).
