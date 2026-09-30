@@ -3,11 +3,11 @@
 - task_id: F1-T007
 - champion: Fábio Schneider
 - spec: 04_fase-atual/specs/spec-1-002-registro-operacional-producao.md
-- etapa: aguardando_teste_humano
+- etapa: em_correcao
 - autorizacao_implementacao: confirmada — 2026-09-29 21:26 — "Pode implementar F1-T007"
-- teste_humano: pendente
-- verificacao_automatica: passou — Skip v0.0.29/v0.0.30/v0.0.31 (setup, estática, build, integrações, testes ok) + caminho real: F1-INVALID-001 BLOQUEADO com missing_fields; EDGE-001 nulos preservados VALIDO; EDGE-002 AGENDADO preservado; EDGE-003 clínico rejeitado sem persistir; correção de bloqueado gera v2 VALIDO com v1 preservada; regressão F1-T006 ok. Correção interna v0.0.30 (escopo compara só dimensões presentes). Evidência em 05_entregas/F1-T007-evidencia.md
+- teste_humano: falhou — 2026-09-29 21:33 — "nao me pareceu correto, reavaliar" (sintoma sem detalhe; reavaliação completa dos cenários)
+- verificacao_automatica: passou — Skip v0.0.29/v0.0.30/v0.0.31 (pipeline verde) + caminho real exercitado; sob revisão após relato do champion
 - aprendizado: pendente
-- ultima_acao: implementação verificada no caminho real; evidência registrada; aguardando teste humano
-- proxima_acao: aguardar teste humano do champion na seção F1-T007 do preview
-- atualizado_em: 2026-09-30T00:32:00-03:00
+- ultima_acao: champion relatou resultado incorreto no teste; debug iniciado
+- proxima_acao: reproduzir e diagnosticar os cenários F1-T007 no preview
+- atualizado_em: 2026-09-29T21:34:00-03:00
