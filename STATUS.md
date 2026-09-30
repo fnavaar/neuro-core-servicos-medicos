@@ -1,6 +1,6 @@
 # STATUS — Projeto Qualivida Serviços Médicos LTDA
 
-> **Atualizado em:** 2026-09-01 · **Por:** Eduard / Fábio
+> **Atualizado em:** 2026-09-29 · **Por:** Eduard / Fábio
 > O painel do projeto: fase atual, progresso e o que precisa de atenção.
 
 ## Onde estamos
@@ -11,9 +11,9 @@
 
 ## Progresso da fase
 
-- **Tasks:** 5/12 (42%)
-- **Tasks concluídas:** F1-T001 — pré-condições da governança; F1-T002 — fixture e política mínima de escopo; F1-T003 — negações e privacidade; F1-T004 — auditoria e rollback de RLS; F1-T005 — contrato de campos mínimos.
-- **Próxima task do champion:** F1-T006 — criar registro operacional válido (SPEC-1-002, usa o contrato F1-FIELDS-BASELINE).
+- **Tasks:** 6/12 (50%)
+- **Tasks concluídas:** F1-T001 — pré-condições da governança; F1-T002 — fixture e política mínima de escopo; F1-T003 — negações e privacidade; F1-T004 — auditoria e rollback de RLS; F1-T005 — contrato de campos mínimos; F1-T006 — registro operacional válido.
+- **Próxima task do champion:** F1-T007 — exercitar bloqueios, bordas e versionamento (SPEC-1-002, usa o registro válido da F1-T006).
 
 ## Contexto operacional confirmado
 
@@ -40,7 +40,8 @@
 | F1-T003 | Negações de escopo (entidade, unidade, profissional) e rejeição de payload clínico demonstradas no Skip | 2026-08-31 |
 | F1-T004 | Auditoria de alteração de escopo com versionamento e rollback sem apagar auditoria, demonstrados no Skip | 2026-09-01 |
 | F1-T005 | Contrato F1-FIELDS-BASELINE: catálogo próprio por clínica (27 serviços, 21 pagadores), guia individual + record_id, retenção permanente, RN-1-005/006/007, código TUSS opcional | 2026-09-01 |
+| F1-T006 | Registro operacional válido: módulo com dimensões mínimas da SPEC-1-002, validação VALIDO/BLOQUEADO, RLS reaproveitada, auditoria e versionamento; demonstrado no Skip v0.0.27/v0.0.28 | 2026-09-29 |
 
 ## Próxima reunião
 
-A definir — análise da F1-T006 sobre criação de registro operacional válido com o contrato fechado.
+A definir — análise da F1-T007 sobre bloqueios, bordas e versionamento do registro operacional.
