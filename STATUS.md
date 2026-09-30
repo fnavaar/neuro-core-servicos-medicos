@@ -1,6 +1,6 @@
 # STATUS — Projeto Qualivida Serviços Médicos LTDA
 
-> **Atualizado em:** 2026-09-29 · **Por:** Eduard / Fábio
+> **Atualizado em:** 2026-09-30 · **Por:** Eduard / Fábio
 > O painel do projeto: fase atual, progresso e o que precisa de atenção.
 
 ## Onde estamos
@@ -11,9 +11,9 @@
 
 ## Progresso da fase
 
-- **Tasks:** 9/12 (75%)
-- **Tasks concluídas:** F1-T001 — pré-condições da governança; F1-T002 — fixture e política mínima de escopo; F1-T003 — negações e privacidade; F1-T004 — auditoria e rollback de RLS; F1-T005 — contrato de campos mínimos; F1-T006 — registro operacional válido; F1-T007 — bloqueios, bordas e versionamento; F1-T008 — evidência do registro para o contrato; F1-T009 — aprovação do contrato de saída.
-- **Próxima task do champion:** F1-T010 — gerar envelope válido versionado (SPEC-1-003, dono: Ethos).
+- **Tasks:** 10/12 (83%)
+- **Tasks concluídas:** F1-T001 — pré-condições da governança; F1-T002 — fixture e política mínima de escopo; F1-T003 — negações e privacidade; F1-T004 — auditoria e rollback de RLS; F1-T005 — contrato de campos mínimos; F1-T006 — registro operacional válido; F1-T007 — bloqueios, bordas e versionamento; F1-T008 — evidência do registro para o contrato; F1-T009 — aprovação do contrato de saída; F1-T010 — envelope válido versionado.
+- **Próxima task do champion:** F1-T011 — exercitar rejeição, idempotência e privacidade (SPEC-1-003, dono: Ethos).
 
 ## Contexto operacional confirmado
 
@@ -45,7 +45,8 @@
 | F1-T007 | Bloqueios, bordas e versionamento: BLOQUEADO persistido com missing_fields, status/data/competência validados, conteúdo clínico rejeitado, correção de qualquer registro por nova versão, elegibilidade para a central (VALIDO + ATENDIDO); demonstrado no Skip v0.0.36 | 2026-09-29 |
 | F1-T008 | Separação de evidência para o contrato: `separateForContract` divide elegíveis (VALIDO + ATENDIDO) de excluídos com motivo (BLOQUEADO, STATUS_SEM_PRODUCAO, RASCUNHO); fixture F1-BLOCKED-001; demonstrado no Skip v0.0.40 | 2026-09-29 |
 | F1-T009 | Contrato de saída `production-record.v1` APROVADO pelo responsável financeiro: idempotência por `sistema:record_id:versão`, origem preservada, valores nulos aceitos nesta fase, privacidade na fronteira, versionamento sem emenda silenciosa; central consumidora = este próprio sistema; evidência em `05_entregas/F1-T009-evidencia.md` | 2026-09-29 |
+| F1-T010 | Envelope `production-record.v1` determinístico: `buildProductionEnvelope` com origem, dimensões, `service_ref` do catálogo, audit e `idempotency_key`; determinismo provado por comparação dupla na tela; demonstrado no Skip v0.0.42 | 2026-09-30 |
 
 ## Próxima reunião
 
-A definir — geração do envelope `production-record.v1` (F1-T010) e testes de rejeição/idempotência/privacidade (F1-T011).
+A definir — testes de rejeição, idempotência e privacidade (F1-T011) e handoff para a Fase 2 (F1-T012).
