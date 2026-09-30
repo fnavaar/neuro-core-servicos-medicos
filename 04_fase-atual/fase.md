@@ -1,6 +1,6 @@
 # Fase 1 — Tarefas gerais
 
-**Estado da fase:** F1-T001 a F1-T008 concluídas; F1-T009 é a próxima task, ainda não iniciada.  
+**Estado da fase:** F1-T001 a F1-T009 concluídas; F1-T010 é a próxima task, ainda não iniciada.  
 **Regra de execução:** uma task por vez, somente após a pré-condição da linha estar comprovada; nenhum dado real, integração ou decisão ausente pode ser inventado.
 
 ## Tasks
@@ -15,7 +15,7 @@
 | F1-T006 | Criar registro operacional válido | Ethos | SPEC-1-002 | Fixture completa produz registro `VALIDO` com dimensões, responsável, evidência, auditoria e versão | F1-T005 e F1-T002 concluídas | concluída — 2026-09-29 |
 | F1-T007 | Exercitar bloqueios, bordas e versionamento | Ethos | SPEC-1-002 | Ausência/ambiguidade/status desconhecido bloqueia; correção cria nova versão; conteúdo clínico é rejeitado | F1-T006 concluída | concluída — 2026-09-29 |
 | F1-T008 | Entregar evidência do registro para o contrato | Analista financeiro | SPEC-1-002 | Somente registro `VALIDO` é separado para SPEC-1-003 e registros `BLOQUEADO` permanecem fora da saída | F1-T006 e F1-T007 concluídas | concluída — 2026-09-29 |
-| F1-T009 | Registrar aprovação do contrato de saída | Responsável financeiro | SPEC-1-003 | A versão `production-record.v1`, campos obrigatórios e regra de idempotência estão aprovados ou rejeitados com motivo | F1-T001 concluída; central consumidora identificada | bloqueada |
+| F1-T009 | Registrar aprovação do contrato de saída | Responsável financeiro | SPEC-1-003 | A versão `production-record.v1`, campos obrigatórios e regra de idempotência estão aprovados ou rejeitados com motivo | F1-T001 concluída; central consumidora identificada | concluída — 2026-09-29 |
 | F1-T010 | Gerar envelope válido versionado | Ethos | SPEC-1-003 | Registro `VALIDO` gera envelope completo, determinístico e com `idempotency_key` | F1-T008 e F1-T009 concluídas; runner disponível | bloqueada |
 | F1-T011 | Exercitar rejeição, idempotência e privacidade | Ethos | SPEC-1-003 | Bloqueado/duplicado/identidade ambígua não gera saída; repetição não duplica; campo clínico é rejeitado | F1-T010 concluída | bloqueada |
 | F1-T012 | Fechar evidências e handoff para a Fase 2 | Analista financeiro | SPEC-1-003 | Pacote contém contrato, fixtures, rejeições, idempotência, aprovação e pendências; nenhuma API/PDF foi usada | F1-T009, F1-T010 e F1-T011 concluídas | bloqueada |
@@ -29,7 +29,8 @@
 - Superfície e runner: ETHOS.
 - Contrato F1-FIELDS-BASELINE fechado na F1-T005: catálogo próprio por clínica (27 serviços, 21 pagadores), `guide_number` + `record_id`, retenção permanente, RN-1-005 (vínculo = agendável), RN-1-006 (catálogo por clínica), RN-1-007 (vigência imediata/futura/retroativa), código TUSS opcional (pacote contratual aceito).
 - Registro operacional da F1-T006/F1-T007/F1-T008: módulo `src/lib/operational-record.ts` com validação `VALIDO`/`BLOQUEADO`, rejeição de conteúdo clínico, correção versionada, gate `isEligibleForCentral` (VALIDO + ATENDIDO) e `separateForContract` (elegíveis vs excluídos com motivo); demonstrado no Skip v0.0.40.
+- **Contrato de saída aprovado (F1-T009):** `production-record.v1` APROVADO pelo responsável financeiro (2026-09-29 22:10); central consumidora = este próprio sistema; idempotência por `sistema:record_id:versão`; valores nulos aceitos nesta fase; evidência em `05_entregas/F1-T009-evidencia.md`.
 
 ## Próximo passo
 
-Analisar F1-T009 em uma nova rodada autorizada: aprovação do contrato de saída (`production-record.v1`, campos obrigatórios e regra de idempotência) pelo responsável financeiro. A central consumidora ainda não foi identificada — confirmar antes de iniciar.
+Analisar F1-T010 em uma nova rodada autorizada: gerar o envelope `production-record.v1` determinístico conforme o contrato aprovado. Não gerar envelope fora do recorte antes da análise e autorização específicas da task.
