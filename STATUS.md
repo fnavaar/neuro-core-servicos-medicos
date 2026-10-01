@@ -7,13 +7,13 @@
 
 - **Fase atual:** 1 — Registro operacional e governança de responsáveis · aberta em 2026-08-19
 - **Objetivo desta fase:** validar o registro mínimo de produção/prontuário, seus responsáveis, regras de acesso e o contrato de saída para a central financeira, usando fixtures controladas.
-- **No prazo?** em preparação — execução técnica após pré-condições.
+- **No prazo?** fase completa — aguardando validação do consultor para o fechamento.
 
 ## Progresso da fase
 
-- **Tasks:** 11/12 (92%)
-- **Tasks concluídas:** F1-T001 — pré-condições da governança; F1-T002 — fixture e política mínima de escopo; F1-T003 — negações e privacidade; F1-T004 — auditoria e rollback de RLS; F1-T005 — contrato de campos mínimos; F1-T006 — registro operacional válido; F1-T007 — bloqueios, bordas e versionamento; F1-T008 — evidência do registro para o contrato; F1-T009 — aprovação do contrato de saída; F1-T010 — envelope válido versionado; F1-T011 — rejeição, idempotência e privacidade (fechamento consolidado em 2026-10-01, com varredura no preview v0.0.44).
-- **Próxima task do champion:** F1-T012 — fechar evidências e handoff para a Fase 2 (SPEC-1-003, dono: analista financeiro). Última task da fase.
+- **Tasks:** 12/12 (100%)
+- **Tasks concluídas:** F1-T001 — pré-condições da governança; F1-T002 — fixture e política mínima de escopo; F1-T003 — negações e privacidade; F1-T004 — auditoria e rollback de RLS; F1-T005 — contrato de campos mínimos; F1-T006 — registro operacional válido; F1-T007 — bloqueios, bordas e versionamento; F1-T008 — evidência do registro para o contrato; F1-T009 — aprovação do contrato de saída; F1-T010 — envelope válido versionado; F1-T011 — rejeição, idempotência e privacidade (fechamento consolidado em 2026-10-01); F1-T012 — handoff para a Fase 2 (pacote `F1-HANDOFF-001` em `05_entregas/F1-T012-handoff-fase-2.md`).
+- **Próxima etapa:** validação do consultor para o fechamento da Fase 1; depois, abertura da Fase 2 (API/fallback de PDF e transporte do contrato para a central).
 
 ## Contexto operacional confirmado
 
@@ -47,7 +47,8 @@
 | F1-T009 | Contrato de saída `production-record.v1` APROVADO pelo responsável financeiro: idempotência por `sistema:record_id:versão`, origem preservada, valores nulos aceitos nesta fase, privacidade na fronteira, versionamento sem emenda silenciosa; central consumidora = este próprio sistema; evidência em `05_entregas/F1-T009-evidencia.md` | 2026-09-29 |
 | F1-T010 | Envelope `production-record.v1` determinístico: `buildProductionEnvelope` com origem, dimensões, `service_ref` do catálogo, audit e `idempotency_key`; determinismo provado por comparação dupla na tela; demonstrado no Skip v0.0.42 | 2026-09-30 |
 | F1-T011 | Rejeição, idempotência e privacidade: `issueEnvelope` com rejeições estruturadas (NAO_ELEGIVEL, IDENTIDADE_AMBIGUA, CLINICAL_CONTENT), idempotência em memória (repetição devolve o mesmo envelope, contador não sobe), fixtures F1-NULL-VALUE-001/F1-DUPLICATE-001; varredura da revisão consolidada confirmou os 5 cenários no preview v0.0.44 | 2026-10-01 |
+| F1-T012 | Handoff para a Fase 2: pacote `F1-HANDOFF-001` com contrato aprovado + envelope de referência, mapa das 9 fixtures/provas, rejeições e regra de idempotência, pendências herdadas e declaração verificável de nenhuma API/PDF na Fase 1 (inspeção do módulo, Skip v0.0.44); documento em `05_entregas/F1-T012-handoff-fase-2.md` | 2026-10-01 |
 
 ## Próxima reunião
 
-A definir — handoff para a Fase 2 (F1-T012) e validação de fechamento da fase com o consultor.
+A definir — **validação do consultor para o fechamento da Fase 1** e abertura da Fase 2 (transporte do contrato para a central: API, autenticação e fallback de PDF).
