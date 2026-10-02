@@ -1,54 +1,39 @@
-# STATUS — Projeto Qualivida Serviços Médicos LTDA
+# STATUS — Projeto Qualivida / Neuro Core
 
-> **Atualizado em:** 2026-10-01 · **Por:** Eduard / Fábio
-> O painel do projeto: fase atual, progresso e o que precisa de atenção.
+**Atualizado em:** 2026-10-02 · **Por:** Adapta Labs
 
 ## Onde estamos
 
-- **Fase atual:** 1 — Registro operacional e governança de responsáveis · aberta em 2026-08-19
-- **Objetivo desta fase:** validar o registro mínimo de produção/prontuário, seus responsáveis, regras de acesso e o contrato de saída para a central financeira, usando fixtures controladas.
-- **No prazo?** fase completa — aguardando validação do consultor para o fechamento.
+- **Fase atual:** 2 — Central financeira e ingestão multi-fonte, aberta em 2026-10-02.
+- **Objetivo:** importar um ciclo de teste pela API preferencial ou pelo fallback de PDF documentado, preservando origem, versão, idempotência durável e recuperação.
+- **Tasks:** 0/12. Cards e critérios em 04_fase-atual/fase.md; três SPECs em 04_fase-atual/specs/.
+- **Próxima task:** Confirmar o ambiente e a fonte do primeiro ciclo.
+- **Execução:** uma task por vez; dependências e permissões conferidas antes de implementar.
 
-## Progresso da fase
+## Contexto confirmado
 
-- **Tasks:** 12/12 (100%)
-- **Tasks concluídas:** F1-T001 — pré-condições da governança; F1-T002 — fixture e política mínima de escopo; F1-T003 — negações e privacidade; F1-T004 — auditoria e rollback de RLS; F1-T005 — contrato de campos mínimos; F1-T006 — registro operacional válido; F1-T007 — bloqueios, bordas e versionamento; F1-T008 — evidência do registro para o contrato; F1-T009 — aprovação do contrato de saída; F1-T010 — envelope válido versionado; F1-T011 — rejeição, idempotência e privacidade (fechamento consolidado em 2026-10-01); F1-T012 — handoff para a Fase 2 (pacote `F1-HANDOFF-001` em `05_entregas/F1-T012-handoff-fase-2.md`).
-- **Próxima etapa:** validação do consultor para o fechamento da Fase 1; depois, abertura da Fase 2 (API/fallback de PDF e transporte do contrato para a central).
+- Fábio Schneider é champion e responsável único. Qualivida é entidade operacional principal.
+- A central consumidora é o próprio sistema, conforme decisão da F1-T009.
+- Preservar production-record.v1 e chave sistema:record_id:versão; valores ausentes continuam null.
+- Execução assistida pelo Ethos no ambiente existente; submódulo 07_sistemas preservado.
 
-## Contexto operacional confirmado
+## Pré-condições da Fase 2
 
-- **Empresa:** Qualivida Serviços Médicos LTDA — entidade principal no sistema.
-- **Champion:** Fábio Schneider — CEO, líder do projeto e único responsável.
-- **Unidades:** 5 no total; 2 com nome “Qualivida”; 3 com outros nomes, ainda não informados.
-- **Usuários:** Fábio é o único usuário com acesso no momento.
-- **Superfície técnica:** ETHOS.
-- **Runner de testes:** ETHOS.
-- **Central consumidora:** este próprio sistema (nova aplicação de prontuário/produção) — confirmado em 2026-09-29.
-
-## Travas ativas
-
-| Trava | Desde | Quem resolve | Ação em curso |
-|---|---|---|---|
-| Nomes das 3 unidades restantes | 2026-08-31 | Fábio | Confirmar quando forem necessários para cadastro real |
-
-## Entregas concluídas
-
-| Fase | O que foi entregue | Fechada em |
+| Item | Quem confirma | Quando |
 |---|---|---|
-| Preparação | Escopo, SPECs, tasks e pasta operacional da Fase 1 | 2026-08-19 |
-| F1-T001 | Pré-condições formalizadas; identidade, responsável, superfície e runner registrados | 2026-08-31 |
-| F1-T002 | Fixture sintética e política mínima RN-1-001; cenário RLS-ALLOW demonstrado no Skip, sem dados reais | 2026-08-31 |
-| F1-T003 | Negações de escopo (entidade, unidade, profissional) e rejeição de payload clínico demonstradas no Skip | 2026-08-31 |
-| F1-T004 | Auditoria de alteração de escopo com versionamento e rollback sem apagar auditoria, demonstrados no Skip | 2026-09-01 |
-| F1-T005 | Contrato F1-FIELDS-BASELINE: catálogo próprio por clínica (27 serviços, 21 pagadores), guia individual + record_id, retenção permanente, RN-1-005/006/007, código TUSS opcional | 2026-09-01 |
-| F1-T006 | Registro operacional válido: módulo com dimensões mínimas da SPEC-1-002, validação VALIDO/BLOQUEADO, RLS reaproveitada, auditoria e versionamento; demonstrado no Skip v0.0.27/v0.0.28 | 2026-09-29 |
-| F1-T007 | Bloqueios, bordas e versionamento: BLOQUEADO persistido com missing_fields, status/data/competência validados, conteúdo clínico rejeitado, correção de qualquer registro por nova versão, elegibilidade para a central (VALIDO + ATENDIDO); demonstrado no Skip v0.0.36 | 2026-09-29 |
-| F1-T008 | Separação de evidência para o contrato: `separateForContract` divide elegíveis (VALIDO + ATENDIDO) de excluídos com motivo (BLOQUEADO, STATUS_SEM_PRODUCAO, RASCUNHO); fixture F1-BLOCKED-001; demonstrado no Skip v0.0.40 | 2026-09-29 |
-| F1-T009 | Contrato de saída `production-record.v1` APROVADO pelo responsável financeiro: idempotência por `sistema:record_id:versão`, origem preservada, valores nulos aceitos nesta fase, privacidade na fronteira, versionamento sem emenda silenciosa; central consumidora = este próprio sistema; evidência em `05_entregas/F1-T009-evidencia.md` | 2026-09-29 |
-| F1-T010 | Envelope `production-record.v1` determinístico: `buildProductionEnvelope` com origem, dimensões, `service_ref` do catálogo, audit e `idempotency_key`; determinismo provado por comparação dupla na tela; demonstrado no Skip v0.0.42 | 2026-09-30 |
-| F1-T011 | Rejeição, idempotência e privacidade: `issueEnvelope` com rejeições estruturadas (NAO_ELEGIVEL, IDENTIDADE_AMBIGUA, CLINICAL_CONTENT), idempotência em memória (repetição devolve o mesmo envelope, contador não sobe), fixtures F1-NULL-VALUE-001/F1-DUPLICATE-001; varredura da revisão consolidada confirmou os 5 cenários no preview v0.0.44 | 2026-10-01 |
-| F1-T012 | Handoff para a Fase 2: pacote `F1-HANDOFF-001` com contrato aprovado + envelope de referência, mapa das 9 fixtures/provas, rejeições e regra de idempotência, pendências herdadas e declaração verificável de nenhuma API/PDF na Fase 1 (inspeção do módulo, Skip v0.0.44); documento em `05_entregas/F1-T012-handoff-fase-2.md` | 2026-10-01 |
+| Ambiente existente, cópia de implementação, armazenamento durável e escopo de acesso | Champion/Ethos | Antes da primeira implementação |
+| Endpoint, autenticação segura, esquema, paginação e limites da API; ou inviabilidade documentada | Champion/administrador | Antes do transporte pela API |
+| Pasta/fonte em leitura, amostra e layout reconhecido, mapeamento e revisão de OCR | Champion/financeiro | Antes da importação PDF |
+| Catálogo vigente e nomes das três unidades restantes | Champion/financeiro | Antes de dados reais |
 
-## Próxima reunião
+Nenhum segredo é gravado no repositório. Fixtures sintéticas isoladas até autorização de fonte real.
 
-A definir — **validação do consultor para o fechamento da Fase 1** e abertura da Fase 2 (transporte do contrato para a central: API, autenticação e fallback de PDF).
+## Entregas preservadas
+
+- **Fase 1:** 12/12 concluídas no registro do cliente; fase encerrada administrativamente por autorização expressa do consultor em 2026-10-02. Unidade arquivada em 05_entregas/fase-1/.
+- Evidências F1-T001 a F1-T012 continuam em 05_entregas; pacote F1-HANDOFF-001 em 05_entregas/F1-T012-handoff-fase-2.md.
+- A liberação não registra nova reexecução técnica ou novo teste humano da Fase 1; conserva os aceites e limitações existentes.
+
+## Próxima demonstração
+
+Após o primeiro ciclo sintético importado: mostrar origem/versão, reiniciar, reimportar sem duplicação e recuperar falha. Aceite do champion registrado por task.

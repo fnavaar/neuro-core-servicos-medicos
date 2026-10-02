@@ -1,36 +1,31 @@
 {
   "schemaVersion": "adapta-cliente-handoff/v1",
-  "phase": 1,
+  "phase": 2,
   "versions": {
     "package": "0.1.0",
     "adapta": "0.7.0",
     "adaptaCliente": "0.2.0"
   },
-  "generatedAt": "2026-08-19T19:04:52.256Z",
+  "generatedAt": "2026-10-02T21:04:57.360Z",
   "files": [
     {
-      "path": "04_fase-atual/README.md",
-      "sha256": "57843f15414253dfbcc46b12fc0860f4aa0481fefdd8440eca68b80a3663f4cc",
-      "classification": "template-publico"
-    },
-    {
       "path": "04_fase-atual/fase.md",
-      "sha256": "9947b65c365f72117cdd69bf7c1454e1fb2d697137ae44bc0e267b86b5246572",
+      "sha256": "c3e034ab3714c3b990e1f641ac894c27acc418f0a8bfd0fe9f574c42d46e4753",
       "classification": "fase-atual"
     },
     {
-      "path": "04_fase-atual/specs/spec-1-001-governanca-responsaveis-rls.md",
-      "sha256": "1dd8923d52abbb45bc3ace23770f756e54d88eca0344e5ce2411dec645cca19d",
+      "path": "04_fase-atual/specs/spec-2-001-central-proveniencia-idempotencia.md",
+      "sha256": "94439b317793fdaef3bcc3e7325ae2e603b802828b6bb019068a88b1f8628682",
       "classification": "spec-fase-atual"
     },
     {
-      "path": "04_fase-atual/specs/spec-1-002-registro-operacional-producao.md",
-      "sha256": "ac19378aba916867e6d713008509f8ae5553cfc4dd4809958bbb1edd84a49dfa",
+      "path": "04_fase-atual/specs/spec-2-002-entrada-api-recuperacao.md",
+      "sha256": "7e1a0cdc2b95726411ed869e329e134c4ff2b97122ed5d80aa675e7e77a413a9",
       "classification": "spec-fase-atual"
     },
     {
-      "path": "04_fase-atual/specs/spec-1-003-contrato-saida-central.md",
-      "sha256": "cd1b5f80219c9c51301996da02947320a2b9075343fd33e45bf0d41eeecd2925",
+      "path": "04_fase-atual/specs/spec-2-003-fallback-pdf-rastreabilidade.md",
+      "sha256": "2eefa03bada1d782ab9c9f2a3e95a6b233298883e411154044aea0787c00d32a",
       "classification": "spec-fase-atual"
     }
   ]

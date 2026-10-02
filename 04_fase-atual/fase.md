@@ -1,39 +1,64 @@
-# Fase 1 — Tarefas gerais
+# Fase 2 — Tarefas
 
-**Estado da fase:** F1-T001 a F1-T012 concluídas — fase completa (12/12); fechamento da fase sujeito à validação do consultor.  
-**Regra de execução:** uma task por vez, somente após a pré-condição da linha estar comprovada; nenhum dado real, integração ou decisão ausente pode ser inventado.
+<!-- fase-format:2 -->
 
-## Tasks
+**Objetivo:** trazer um ciclo de teste à central financeira do próprio sistema por API preferencial ou fallback de PDF documentado, com proveniência, idempotência durável e recuperação.
 
-| ID | Task | Dono | SPEC | Critério binário | Pré-condições | Status |
-|---|---|---|---|---|---|---|
-| F1-T001 | Registrar pré-condições da governança | Cliente — administrador | SPEC-1-001 | Matriz RLS, identidade oficial, superfície técnica e runner registrados ou ausência formalizada com dono e prazo | Gate de escopo aprovado; participação do cliente | concluída — 2026-08-31 |
-| F1-T002 | Criar fixture e política mínima de escopo | Ethos | SPEC-1-001 | Fixture sintética contém entidade, unidade, profissional, usuários e escopos; usuário autorizado lê o registro-alvo | F1-T001 concluída; ambiente de teste autorizado | concluída — 2026-08-31 |
-| F1-T003 | Exercitar negações e privacidade | Ethos | SPEC-1-001 | Usuários sem entidade, unidade ou profissional recebem negação e payload clínico não é persistido | F1-T002 concluída | concluída — 2026-08-31 |
-| F1-T004 | Auditar alteração e demonstrar rollback de RLS | Ethos | SPEC-1-001 | Alteração sensível registra versões e rollback restaura política anterior sem apagar auditoria | F1-T002 e F1-T003 concluídas | concluída — 2026-09-01 |
-| F1-T005 | Registrar contrato de campos mínimos | Cliente — administrador | SPEC-1-002 | Campos mínimos, identidade oficial, fronteira clínico/administrativo e retenção registrados | F1-T001 concluída; SPEC-1-001 desbloqueada | concluída — 2026-09-01 |
-| F1-T006 | Criar registro operacional válido | Ethos | SPEC-1-002 | Fixture completa produz registro `VALIDO` com dimensões, responsável, evidência, auditoria e versão | F1-T005 e F1-T002 concluídas | concluída — 2026-09-29 |
-| F1-T007 | Exercitar bloqueios, bordas e versionamento | Ethos | SPEC-1-002 | Ausência/ambiguidade/status desconhecido bloqueia; correção cria nova versão; conteúdo clínico é rejeitado | F1-T006 concluída | concluída — 2026-09-29 |
-| F1-T008 | Entregar evidência do registro para o contrato | Analista financeiro | SPEC-1-002 | Somente registro `VALIDO` é separado para SPEC-1-003 e registros `BLOQUEADO` permanecem fora da saída | F1-T006 e F1-T007 concluídas | concluída — 2026-09-29 |
-| F1-T009 | Registrar aprovação do contrato de saída | Responsável financeiro | SPEC-1-003 | A versão `production-record.v1`, campos obrigatórios e regra de idempotência estão aprovados ou rejeitados com motivo | F1-T001 concluída; central consumidora identificada | concluída — 2026-09-29 |
-| F1-T010 | Gerar envelope válido versionado | Ethos | SPEC-1-003 | Registro `VALIDO` gera envelope completo, determinístico e com `idempotency_key` | F1-T008 e F1-T009 concluídas; runner disponível | concluída — 2026-09-30 |
-| F1-T011 | Exercitar rejeição, idempotência e privacidade | Ethos | SPEC-1-003 | Bloqueado/duplicado/identidade ambígua não gera saída; repetição não duplica; campo clínico é rejeitado | F1-T010 concluída | concluída — 2026-10-01 |
-| F1-T012 | Fechar evidências e handoff para a Fase 2 | Analista financeiro | SPEC-1-003 | Pacote contém contrato, fixtures, rejeições, idempotência, aprovação e pendências; nenhuma API/PDF foi usada | F1-T009, F1-T010 e F1-T011 concluídas | concluída — 2026-10-01 |
+**Abertura:** 2026-10-02. Uma task por vez. As tasks de preparação podem ser iniciadas; as demais aguardam suas dependências e acesso autorizado. Somente fixtures sintéticas até autorização de fonte real. UUIDs novos aguardam o portal; responsável e prazo dos cards não foram inventados.
 
-## Contexto confirmado para a próxima task
+## Cards
 
-- Qualivida é a entidade principal.
-- Fábio Schneider é CEO, líder do projeto e único responsável.
-- Existem 5 unidades: 2 chamadas Qualivida e 3 com nomes ainda pendentes.
-- Fábio é o único usuário com acesso no momento.
-- Superfície e runner: ETHOS.
-- Contrato F1-FIELDS-BASELINE fechado na F1-T005: catálogo próprio por clínica (27 serviços, 21 pagadores), `guide_number` + `record_id`, retenção permanente, RN-1-005 (vínculo = agendável), RN-1-006 (catálogo por clínica), RN-1-007 (vigência imediata/futura/retroativa), código TUSS opcional (pacote contratual aceito).
-- Registro operacional (F1-T006/T007/T008): módulo `src/lib/operational-record.ts` com validação `VALIDO`/`BLOQUEADO`, rejeição de conteúdo clínico, correção versionada, gate `isEligibleForCentral` (VALIDO + ATENDIDO) e `separateForContract`.
-- **Contrato de saída aprovado (F1-T009):** `production-record.v1` APROVADO (2026-09-29 22:10); central consumidora = este próprio sistema; idempotência por `sistema:record_id:versão`; valores nulos aceitos nesta fase.
-- **Envelope (F1-T010):** `buildProductionEnvelope` determinístico; determinismo provado por comparação dupla; Skip v0.0.42.
-- **Camada do contrato (F1-T011):** `issueEnvelope` com rejeições estruturadas (`NAO_ELEGIVEL`, `IDENTIDADE_AMBIGUA`, `CLINICAL_CONTENT`), idempotência em memória (repetição devolve o mesmo envelope como DUPLICADO, contador não sobe) e fixtures `F1-NULL-VALUE-001`/`F1-DUPLICATE-001`; varredura da revisão consolidada (2026-10-01 11:19) confirmou os 5 cenários no preview v0.0.44.
-- **Handoff (F1-T012):** pacote `F1-HANDOFF-001` em `05_entregas/F1-T012-handoff-fase-2.md` — contrato aprovado + envelope de referência, mapa completo das fixtures e provas, rejeições e regra de idempotência, pendências herdadas para a Fase 2 e declaração verificável de nenhuma API/PDF na Fase 1 (inspeção do módulo em 2026-10-01, Skip v0.0.44).
+- [ ] Confirmar o ambiente e a fonte do primeiro ciclo #projeto
+  > SPEC-2-001 — CA-2-001; prova F2-CONFIG-001. Pré-condições: Handoff F1-HANDOFF-001. Registrar ambiente do sistema existente, armazenamento durável autorizado, escopo de acesso e origem sintética do ciclo. Anexar configuração sem segredos, fonte oficial, responsáveis e relação origem → destino. Não escolher nova stack nem criar dados reais. A ausência de acesso fica registrada e impede a task de persistência.
 
-## Próximo passo
+- [ ] Guardar um ciclo de teste na central #projeto
+  > SPEC-2-001 — CA-2-002; prova F2-CENTRAL-001. Pré-condições: Confirmar o ambiente e a fonte do primeiro ciclo. Reusar production-record.v1 e persistir um lote sintético validado na central do próprio sistema, com origem, versão, evidência e valores nulos preservados. Registrar configuração autorizada antes de alterar armazenamento. Após reiniciar, o ciclo continua disponível com as mesmas chaves.
 
-Fase 1 completa (12/12). Fechamento da fase exige validação do consultor na próxima sincronização. A Fase 2 (API/fallback de PDF e transporte do contrato para a central) começa apenas após essa validação, com escopo e SPECs próprios.
+- [ ] Impedir duplicação após reinício #projeto
+  > SPEC-2-001 — CA-2-003; prova F2-IDEMP-001. Pré-condições: Guardar um ciclo de teste na central. Persistir a chave sistema:record_id:versão com unicidade no servidor. Reimportar o lote, reiniciar e repetir; duas requisições concorrentes resultam em uma única emissão. Mesma chave com conteúdo divergente gera conflito, sem sobrescrever o original.
+
+- [ ] Recuperar o ciclo após uma falha #projeto
+  > SPEC-2-001 — CA-2-004; prova F2-ROLLBACK-001. Pré-condições: Impedir duplicação após reinício. Simular falha no meio do lote, entrada sem permissão, identidade não mapeada e conteúdo clínico. Nenhum registro parcial é exposto. Repetir após correção e reverter a versão ativa sem apagar originais, histórico ou chaves emitidas.
+
+- [ ] Registrar o caminho autorizado de entrada #projeto
+  > SPEC-2-002 — CA-2-005; prova F2-API-CONFIG-001. Pré-condições: Handoff F1-HANDOFF-001. Documentar se a API da aplicação existente é viável: endpoint, método, esquema, escopos mínimos, paginação, timeout, limite e referência segura de autenticação. Sem segredo em arquivo. Central é o próprio sistema. Sem API autorizada, registrar inviabilidade e encaminhar para fallback; não inventar endpoint.
+
+- [ ] Trazer um ciclo pela API #projeto
+  > SPEC-2-002 — CA-2-006; prova F2-API-001. Pré-condições: Registrar o caminho autorizado de entrada; Guardar um ciclo de teste na central. Somente com API autorizada e configuração registrada: adaptar o payload ao contrato aprovado e importar um ciclo sintético até o fim da paginação, preservando proveniência e versão. A evidência deve listar quantos registros foram recebidos, aceitos, duplicados ou rejeitados e quais estão visíveis na central.
+
+- [ ] Tratar indisponibilidade sem perder o ciclo #projeto
+  > SPEC-2-002 — CA-2-007; prova F2-API-ERROR-001. Pré-condições: Trazer um ciclo pela API. Exercitar timeout, 401/403, 429, 5xx, página ausente, resposta inválida e fonte vazia. Não confirmar lote incompleto; reprocessamento usa a mesma chave. Indisponibilidade habilita revisão do fallback autorizado, sem executar leitura de pastas automaticamente.
+
+- [ ] Demonstrar o resultado da entrada pela API #projeto
+  > SPEC-2-002 — CA-2-008; prova F2-API-HANDOFF-001. Pré-condições: Tratar indisponibilidade sem perder o ciclo. Demonstrar origem, competência, versões, nulos, repetição com total estável e recuperação. Se API foi declarada inviável, esta task registra não aplicabilidade com motivo e evidência da decisão e referencia o teste equivalente da SPEC-2-003; não declarar API implementada.
+
+- [ ] Autorizar a pasta e o layout do fallback #projeto
+  > SPEC-2-003 — CA-2-009; prova F2-PDF-CONFIG-001. Pré-condições: Handoff F1-HANDOFF-001. Registrar fonte/pasta autorizada em leitura, responsável, amostra sintética ou anonimizada aprovada, hash, versão do layout, campos e mapeamentos. Restringir ao escopo autorizado. PDF clínico não entra. OCR só após regra de revisão aprovada; sem layout reconhecido, bloquear a importação.
+
+- [ ] Importar um demonstrativo pelo fallback #projeto
+  > SPEC-2-003 — CA-2-010; prova F2-PDF-001. Pré-condições: Autorizar a pasta e o layout do fallback; Guardar um ciclo de teste na central. Ler a amostra do layout autorizado preservando original e hash. Extrair campos administrativos e valores sem estimar ausências. Mostrar prévia com origem, linha/página e mapeamento; confirmar lote somente após validação completa. A origem é PDF_FALLBACK, distinta da API.
+
+- [ ] Separar PDFs ilegíveis e entradas repetidas #projeto
+  > SPEC-2-003 — CA-2-011; prova F2-PDF-ERROR-001. Pré-condições: Importar um demonstrativo pelo fallback. Exercitar pasta vazia, acesso negado, PDF ilegível, layout desconhecido, identidade ambígua, valor ausente e arquivo repetido. Erro vira exceção identificável e não lote parcial. Mesmo arquivo reimportado não altera total; revisão alterada mantém histórico e exige mapeamento aprovado.
+
+- [ ] Fechar as evidências do ciclo importado #projeto
+  > SPEC-2-003 — CA-2-012; prova F2-HANDOFF-001. Pré-condições: Recuperar o ciclo após uma falha; Demonstrar o resultado da entrada pela API; Separar PDFs ilegíveis e entradas repetidas. Consolidar ciclo importado pela rota viável, registro de decisão API/fallback, provas de proveniência, idempotência durável, permissão, falha e rollback, além das pendências para a fase seguinte. Rota inviável ou não usada exige motivo explícito e não conta como implementação. Solicitar demonstração e aceite do champion.
+
+## Tasks — referência operacional
+
+Esta tabela é uma projeção de critérios e dependências para compatibilidade. O status editável vive apenas nas caixas dos cards acima. Identificadores F2-Txxx são referências locais de evidência, não UUIDs do portal.
+
+| Referência | Task | Papel de execução | SPEC | Critério | Prova | Evidência | Pré-condições | Ponto de parada |
+|---|---|---|---|---|---|---|---|---|
+| F2-T001 | Confirmar o ambiente e a fonte do primeiro ciclo | Champion + Ethos, conforme aceite | SPEC-2-001 | CA-2-001 | F2-CONFIG-001 | 05_entregas/F2-CONFIG-001.md | Handoff F1-HANDOFF-001 | Acesso/regra ausente; nenhum dado real por inferência |
+| F2-T002 | Guardar um ciclo de teste na central | Champion + Ethos, conforme aceite | SPEC-2-001 | CA-2-002 | F2-CENTRAL-001 | 05_entregas/F2-CENTRAL-001.md | Confirmar o ambiente e a fonte do primeiro ciclo | Acesso/regra ausente; nenhum dado real por inferência |
+| F2-T003 | Impedir duplicação após reinício | Champion + Ethos, conforme aceite | SPEC-2-001 | CA-2-003 | F2-IDEMP-001 | 05_entregas/F2-IDEMP-001.md | Guardar um ciclo de teste na central | Acesso/regra ausente; nenhum dado real por inferência |
+| F2-T004 | Recuperar o ciclo após uma falha | Champion + Ethos, conforme aceite | SPEC-2-001 | CA-2-004 | F2-ROLLBACK-001 | 05_entregas/F2-ROLLBACK-001.md | Impedir duplicação após reinício | Acesso/regra ausente; nenhum dado real por inferência |
+| F2-T005 | Registrar o caminho autorizado de entrada | Champion + Ethos, conforme aceite | SPEC-2-002 | CA-2-005 | F2-API-CONFIG-001 | 05_entregas/F2-API-CONFIG-001.md | Handoff F1-HANDOFF-001 | Acesso/regra ausente; nenhum dado real por inferência |
+| F2-T006 | Trazer um ciclo pela API | Champion + Ethos, conforme aceite | SPEC-2-002 | CA-2-006 | F2-API-001 | 05_entregas/F2-API-001.md | Registrar o caminho autorizado de entrada; Guardar um ciclo de teste na central | Acesso/regra ausente; nenhum dado real por inferência |
+| F2-T007 | Tratar indisponibilidade sem perder o ciclo | Champion + Ethos, conforme aceite | SPEC-2-002 | CA-2-007 | F2-API-ERROR-001 | 05_entregas/F2-API-ERROR-001.md | Trazer um ciclo pela API | Acesso/regra ausente; nenhum dado real por inferência |
+| F2-T008 | Demonstrar o resultado da entrada pela API | Champion + Ethos, conforme aceite | SPEC-2-002 | CA-2-008 | F2-API-HANDOFF-001 | 05_entregas/F2-API-HANDOFF-001.md | Tratar indisponibilidade sem perder o ciclo | Acesso/regra ausente; nenhum dado real por inferência |
+| F2-T009 | Autorizar a pasta e o layout do fallback | Champion + Ethos, conforme aceite | SPEC-2-003 | CA-2-009 | F2-PDF-CONFIG-001 | 05_entregas/F2-PDF-CONFIG-001.md | Handoff F1-HANDOFF-001 | Acesso/regra ausente; nenhum dado real por inferência |
+| F2-T010 | Importar um demonstrativo pelo fallback | Champion + Ethos, conforme aceite | SPEC-2-003 | CA-2-010 | F2-PDF-001 | 05_entregas/F2-PDF-001.md | Autorizar a pasta e o layout do fallback; Guardar um ciclo de teste na central | Acesso/regra ausente; nenhum dado real por inferência |
+| F2-T011 | Separar PDFs ilegíveis e entradas repetidas | Champion + Ethos, conforme aceite | SPEC-2-003 | CA-2-011 | F2-PDF-ERROR-001 | 05_entregas/F2-PDF-ERROR-001.md | Importar um demonstrativo pelo fallback | Acesso/regra ausente; nenhum dado real por inferência |
+| F2-T012 | Fechar as evidências do ciclo importado | Champion + Ethos, conforme aceite | SPEC-2-003 | CA-2-012 | F2-HANDOFF-001 | 05_entregas/F2-HANDOFF-001.md | Recuperar o ciclo após uma falha; Demonstrar o resultado da entrada pela API; Separar PDFs ilegíveis e entradas repetidas | Acesso/regra ausente; nenhum dado real por inferência |

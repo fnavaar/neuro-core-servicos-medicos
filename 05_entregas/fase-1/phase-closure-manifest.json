@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "adapta-phase-closure/v1",
+  "phase": 1,
+  "closedAt": "2026-10-02T21:04:57.360Z",
+  "activeDigest": "0abb32863af76ded928cd9fb5e5b22f229730c192b92fbe860236b58331351d1",
+  "files": [
+    {
+      "relative": "fase.md",
+      "sha256": "ef4dd871bd592c225efecfd53166bea3404f35c69c6fad9e4a549523bd194c7b"
+    },
+    {
+      "relative": "README.md",
+      "sha256": "57843f15414253dfbcc46b12fc0860f4aa0481fefdd8440eca68b80a3663f4cc"
+    },
+    {
+      "relative": "specs/spec-1-001-governanca-responsaveis-rls.md",
+      "sha256": "1dd8923d52abbb45bc3ace23770f756e54d88eca0344e5ce2411dec645cca19d"
+    },
+    {
+      "relative": "specs/spec-1-002-registro-operacional-producao.md",
+      "sha256": "ac19378aba916867e6d713008509f8ae5553cfc4dd4809958bbb1edd84a49dfa"
+    },
+    {
+      "relative": "specs/spec-1-003-contrato-saida-central.md",
+      "sha256": "cd1b5f80219c9c51301996da02947320a2b9075343fd33e45bf0d41eeecd2925"
+    }
+  ],
+  "checkSha256": "3ec9b8105bfd49f555d3f127c33b9d50da74dd7012382f6e15848f36d313efb4",
+  "manifestDrift": [
+    {
+      "path": "04_fase-atual/fase.md",
+      "status": "alterado-desde-manifesto",
+      "manifestSha256": "9947b65c365f72117cdd69bf7c1454e1fb2d697137ae44bc0e267b86b5246572",
+      "currentSha256": "ef4dd871bd592c225efecfd53166bea3404f35c69c6fad9e4a549523bd194c7b"
+    }
+  ]
+}
