@@ -6,10 +6,12 @@
 
 **Abertura:** 2026-10-02. Uma task por vez. As tasks de preparação podem ser iniciadas; as demais aguardam suas dependências e acesso autorizado. Somente fixtures sintéticas até autorização de fonte real. UUIDs novos aguardam o portal; responsável e prazo dos cards não foram inventados.
 
+**Autorização (2026-10-05):** o consultor Felipe Navaar autorizou a execução da Fase 2 pelo champion **Fábio Schneider**. A task **F2-T001 — Confirmar o ambiente e a fonte do primeiro ciclo** está **AUTORIZADA** e é a única elegível agora; uma task por vez, com prova da SPEC e teste humano do champion antes da próxima. As demais tasks permanecem aguardando dependências e nova autorização task a task.
+
 ## Cards
 
 - [ ] Confirmar o ambiente e a fonte do primeiro ciclo #projeto
-  > SPEC-2-001 — CA-2-001; prova F2-CONFIG-001. Pré-condições: Handoff F1-HANDOFF-001. Registrar ambiente do sistema existente, armazenamento durável autorizado, escopo de acesso e origem sintética do ciclo. Anexar configuração sem segredos, fonte oficial, responsáveis e relação origem → destino. Não escolher nova stack nem criar dados reais. A ausência de acesso fica registrada e impede a task de persistência.
+  > SPEC-2-001 — CA-2-001; prova F2-CONFIG-001. Pré-condições: Handoff F1-HANDOFF-001. Registrar ambiente do sistema existente, armazenamento durável autorizado, escopo de acesso e origem sintética do ciclo. Anexar configuração sem segredos, fonte oficial, responsáveis e relação origem → destino. Não escolher nova stack nem criar dados reais. A ausência de acesso fica registrada e impede a task de persistência. **AUTORIZADA em 2026-10-05 pelo consultor Felipe Navaar; execução pelo champion Fábio Schneider.**
 
 - [ ] Guardar um ciclo de teste na central #projeto
   > SPEC-2-001 — CA-2-002; prova F2-CENTRAL-001. Pré-condições: Confirmar o ambiente e a fonte do primeiro ciclo. Reusar production-record.v1 e persistir um lote sintético validado na central do próprio sistema, com origem, versão, evidência e valores nulos preservados. Registrar configuração autorizada antes de alterar armazenamento. Após reiniciar, o ciclo continua disponível com as mesmas chaves.

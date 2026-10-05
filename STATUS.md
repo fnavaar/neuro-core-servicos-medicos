@@ -1,14 +1,15 @@
 # STATUS — Projeto Qualivida / Neuro Core
 
-**Atualizado em:** 2026-10-02 · **Por:** Adapta Labs
+**Atualizado em:** 2026-10-05 · **Por:** Adapta Labs
 
 ## Onde estamos
 
 - **Fase atual:** 2 — Central financeira e ingestão multi-fonte, aberta em 2026-10-02.
 - **Objetivo:** importar um ciclo de teste pela API preferencial ou pelo fallback de PDF documentado, preservando origem, versão, idempotência durável e recuperação.
 - **Tasks:** 0/12. Cards e critérios em 04_fase-atual/fase.md; três SPECs em 04_fase-atual/specs/.
-- **Próxima task:** Confirmar o ambiente e a fonte do primeiro ciclo.
+- **Próxima task:** Confirmar o ambiente e a fonte do primeiro ciclo (F2-T001) — **AUTORIZADA** em 2026-10-05 pelo consultor Felipe Navaar para execução do champion Fábio Schneider.
 - **Execução:** uma task por vez; dependências e permissões conferidas antes de implementar.
+- **Autorização:** Fase 2 autorizada para execução em 2026-10-05; F2-T001 é a única task elegível (uma task por vez).
 
 ## Contexto confirmado
 
