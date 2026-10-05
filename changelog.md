@@ -6,6 +6,7 @@
 
 ## Registro
 
+- 2026-10-05 · [Fábio Schneider] · Task F1-T012 fechada: teste humano aprovado pelo champion (documento de handoff conferido; único ajuste no caminho foi o botão de acesso ao GitHub, refeito com a ação correta) e revalidação do zero sem pendências — checklist do critério binário 7/7 no handoff, varredura do módulo confirma nenhuma API/PDF/credencial, sem código novo (Skip v0.0.44 verde); aprendizado capturado em `06_notas/aprendizado-continuo/AP-2026-10-01-1735-openui-openurl-botoes-link.md`. Fase 1 permanece 12/12, encerrada administrativamente em 2026-10-02.
 - 2026-10-05 · [Adapta Labs] · Fase 2 AUTORIZADA para execução pelo champion Fábio Schneider, por pedido do consultor Felipe Navaar. F2-T001 (Confirmar o ambiente e a fonte do primeiro ciclo) é a única task elegível; uma task por vez, com prova da SPEC e teste humano antes da próxima. Nenhum código, dado real ou integração foi alterado nesta autorização.
 
 - 2026-10-02 · [Adapta Labs] · Fase 2 liberada por instrução expressa do consultor, sem análise adicional. Fase 1 arquivada em 05_entregas/fase-1/, preservando as evidências. Publicadas três SPECs e 12 tasks para central financeira, API e fallback PDF, com proveniência, idempotência durável, erros e rollback. Próxima task: confirmar ambiente e fonte do primeiro ciclo. Pré-condições de acesso/fonte real continuam explícitas; nenhum código do sistema alterado nesta liberação.
