@@ -6,6 +6,8 @@
 
 ## Registro
 
+- 2026-10-05 · [Adapta Labs] · Fase 2 AUTORIZADA para execução pelo champion Fábio Schneider, por pedido do consultor Felipe Navaar. F2-T001 (Confirmar o ambiente e a fonte do primeiro ciclo) é a única task elegível; uma task por vez, com prova da SPEC e teste humano antes da próxima. Nenhum código, dado real ou integração foi alterado nesta autorização.
+
 - 2026-10-02 · [Adapta Labs] · Fase 2 liberada por instrução expressa do consultor, sem análise adicional. Fase 1 arquivada em 05_entregas/fase-1/, preservando as evidências. Publicadas três SPECs e 12 tasks para central financeira, API e fallback PDF, com proveniência, idempotência durável, erros e rollback. Próxima task: confirmar ambiente e fonte do primeiro ciclo. Pré-condições de acesso/fonte real continuam explícitas; nenhum código do sistema alterado nesta liberação.
 
 - 2026-10-01 · [Fábio Schneider] · Task F1-T012 concluída: fechamento de evidências e handoff para a Fase 2 — pacote `F1-HANDOFF-001` em `05_entregas/F1-T012-handoff-fase-2.md` consolidando o contrato `production-record.v1` aprovado + envelope de referência, mapa das 9 fixtures/provas com local de cada evidência, rejeições estruturadas e regra de idempotência (estado atual em memória + limite para a Fase 2), aprovação (`F1-CONTRACT-APPROVAL`), pendências herdadas (API/endpoint/autenticação, persistência da idempotência, nomes das 3 unidades, catálogo definitivo, tecnologia da central) e declaração verificável de que nenhuma API/PDF/credencial foi usada na Fase 1 (inspeção do módulo do contrato em 2026-10-01, Skip v0.0.44 — únicos imports internos). Fase 1 completa: 12/12 tasks; fechamento da fase sujeito à validação do consultor.
