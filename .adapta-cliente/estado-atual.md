@@ -5,11 +5,11 @@
 - task: Guardar um ciclo de teste na central
 - champion: Fábio Schneider
 - spec: 04_fase-atual/specs/spec-2-001-central-proveniencia-idempotencia.md
-- etapa: aguardando_autorizacao
-- autorizacao_implementacao: ausente — pedido do champion foi "implementar task F2T003"; F2-T003 tem pré-condição F2-T002 não concluída, então a análise seguiu para a F2-T002 (próxima elegível); autorização de implementação aguarda resposta após este relatório
+- etapa: implementando
+- autorizacao_implementacao: confirmada — 2026-10-15, champion Fábio Schneider: "Pode implementar a F2-T002" (após relatório de análise e trava da F2-T003 explicitada)
 - teste_humano: pendente
 - verificacao_automatica: pendente
 - aprendizado: pendente
-- ultima_acao: F2-T002 analisada (proxima-task); relatório de análise entregue ao champion em 2026-10-15, com a trava da F2-T003 explicitada
-- proxima_acao: aguardar autorização para implementar
+- ultima_acao: autorização registrada; execução da F2-T002 iniciada (executar-task)
+- proxima_acao: criar migração das collections (f2_lots, f2_idempotency), módulo de persistência, seção na tela e prova F2-CENTRAL-001
 - atualizado_em: 2026-10-15T16:20:00-03:00
