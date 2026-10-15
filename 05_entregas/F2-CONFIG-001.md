@@ -77,3 +77,9 @@ Demonstrativo (PDF fallback) terá envelope de ingestão próprio (SPEC-2-003, F
 ## 9. Próximo passo
 
 F2-T002 — Guardar um ciclo de teste na central (CA-2-002, prova F2-CENTRAL-001), condicionada ao aceite humano desta configuração e à autorização task a task.
+
+## 10. Aceite humano e verificação de fechamento
+
+- **Teste humano aprovado pelo champion Fábio Schneider em 2026-10-15** ("Testei e está correto"), após roteiro de teste conferindo a decisão de armazenamento, a fonte sintética e a estratégia de unicidade/transação/reversão contra o ambiente real.
+- **Verificação independente de fechamento (2026-10-15):** arquivo re-baixado do GitHub (8122 bytes) e re-escaneado — sem padrões de segredo; ambiente reconfirmado via MCP Skip (`VITE_POCKETBASE_URL` provisionada; somente collection `users`; v0.0.44 build 17f402a current); nenhum código de produto alterado (diff da task = este documento + estado do orquestrador).
+- **CA-2-001: PASSOU.** Task F2-T001 concluída em 2026-10-15.
