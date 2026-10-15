@@ -5,11 +5,11 @@
 - task: Guardar um ciclo de teste na central
 - champion: Fábio Schneider
 - spec: 04_fase-atual/specs/spec-2-001-central-proveniencia-idempotencia.md
-- etapa: implementando
-- autorizacao_implementacao: confirmada — 2026-10-15, champion Fábio Schneider: "Pode implementar a F2-T002" (após relatório de análise e trava da F2-T003 explicitada)
+- etapa: aguardando_teste_humano
+- autorizacao_implementacao: confirmada — 2026-10-15, champion Fábio Schneider: "Pode implementar a F2-T002" (após relatório de análise)
 - teste_humano: pendente
-- verificacao_automatica: pendente
+- verificacao_automatica: passou — pipeline Skip v0.0.45→v0.0.49 verde (setup/estática/build/integrações); migrações 0001-0003 aplicadas; GREEN provado no preview: lote F2-LOT-2026-10-001 CONFIRMADO, consultável após reinício, nulos preservados, reimportação → DUPLICADO, contagem no servidor 1 lote/1 emissão; prova F2-CENTRAL-001 commitada (ed6afd7); 2 rodadas de debug documentadas na prova
 - aprendizado: pendente
-- ultima_acao: autorização registrada; execução da F2-T002 iniciada (executar-task)
-- proxima_acao: criar migração das collections (f2_lots, f2_idempotency), módulo de persistência, seção na tela e prova F2-CENTRAL-001
-- atualizado_em: 2026-10-15T16:20:00-03:00
+- ultima_acao: prova F2-CENTRAL-001 anexada em 05_entregas (commit ed6afd7); verificações automáticas concluídas
+- proxima_acao: aguardar teste humano do champion (roteiro na prova §6)
+- atualizado_em: 2026-10-15T16:35:00-03:00
