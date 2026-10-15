@@ -8,10 +8,12 @@
 
 **Autorização (2026-10-05):** o consultor Felipe Navaar autorizou a execução da Fase 2 pelo champion **Fábio Schneider**. A task **F2-T001 — Confirmar o ambiente e a fonte do primeiro ciclo** está **AUTORIZADA** e é a única elegível agora; uma task por vez, com prova da SPEC e teste humano do champion antes da próxima. As demais tasks permanecem aguardando dependências e nova autorização task a task.
 
+**Progresso: 1/12 concluídas (F2-T001 em 2026-10-15).**
+
 ## Cards
 
-- [ ] Confirmar o ambiente e a fonte do primeiro ciclo #projeto
-  > SPEC-2-001 — CA-2-001; prova F2-CONFIG-001. Pré-condições: Handoff F1-HANDOFF-001. Registrar ambiente do sistema existente, armazenamento durável autorizado, escopo de acesso e origem sintética do ciclo. Anexar configuração sem segredos, fonte oficial, responsáveis e relação origem → destino. Não escolher nova stack nem criar dados reais. A ausência de acesso fica registrada e impede a task de persistência. **AUTORIZADA em 2026-10-05 pelo consultor Felipe Navaar; execução pelo champion Fábio Schneider.**
+- [x] Confirmar o ambiente e a fonte do primeiro ciclo #projeto
+  > SPEC-2-001 — CA-2-001; prova F2-CONFIG-001. Pré-condições: Handoff F1-HANDOFF-001. Registrar ambiente do sistema existente, armazenamento durável autorizado, escopo de acesso e origem sintética do ciclo. Anexar configuração sem segredos, fonte oficial, responsáveis e relação origem → destino. Não escolher nova stack nem criar dados reais. A ausência de acesso fica registrada e impede a task de persistência. **AUTORIZADA em 2026-10-05 pelo consultor Felipe Navaar; execução pelo champion Fábio Schneider.** **CONCLUÍDA em 2026-10-15:** CA-2-001 PASSOU; prova `05_entregas/F2-CONFIG-001.md` (commits 0abc345 e bb09ee7) com ambiente confirmado (Skip 51227 v0.0.44, VITE_POCKETBASE_URL provisionada, backend PocketBase ativo), decisão de armazenamento durável (PocketBase nativo do Skip), estratégia de unicidade/transação/reversão e fonte sintética fixture://fase-2; varredura de segredos limpa; teste humano aprovado pelo champion ("Testei e está correto", 2026-10-15); verificação independente do zero OK. Pendência de higiene registrada: `.env` commitado no repo do sistema (remover/rotacionar antes da F2-T002).
 
 - [ ] Guardar um ciclo de teste na central #projeto
   > SPEC-2-001 — CA-2-002; prova F2-CENTRAL-001. Pré-condições: Confirmar o ambiente e a fonte do primeiro ciclo. Reusar production-record.v1 e persistir um lote sintético validado na central do próprio sistema, com origem, versão, evidência e valores nulos preservados. Registrar configuração autorizada antes de alterar armazenamento. Após reiniciar, o ciclo continua disponível com as mesmas chaves.
